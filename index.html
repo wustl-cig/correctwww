@@ -5,17 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
-          content="SPICE: Self-Supervised Learning for MRI with Automatic Coil Sensitivity Estimation">
-    <meta name="author" content="Yuyang Hu, Weijie Gan,
-    Chunwei Ying,
-    Tongyao Wang,
-    Cihat Eldeniz,
-    Jiaming Liu,
-    Yasheng Chen
-    Hongyu An,
-    Ulugbek S. Kamilov">
+          content="CoRRECT: A Deep Unfolding Framework for Motion-Corrected Quantitative R2* Mapping">
+    <meta name="author" content="Xiaojian Xu, Weijie Gan, Satya V.V.N. Kothapalli, Dmitriy A. Yablonskiy, Ulugbek S. Kamilov">
 
-    <title>SPICE: Self-Supervised Learning for MRI with Automatic Coil Sensitivity Estimation</title>
+    <title>CoRRECT: A Deep Unfolding Framework for Motion-Corrected Quantitative R2* Mapping</title>
     <!-- Bootstrap core CSS -->
     <!--link href="bootstrap.min.css" rel="stylesheet"-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -31,30 +24,24 @@
 
 <div class="jumbotron jumbotron-fluid">
     <div class="container"></div>
-    <h2>SPICE: Self-Supervised Learning for MRI with</h2> <h2>Automatic Coil Sensitivity Estimation</h2>
-    <p class="abstract">The <b>FIRST</b> Self-Supervised Method for Automatic Coil Sensitivity Calibration in MRI</p>
+    <h2>CoRRECT: A Deep Unfolding Framework for </h2> <h2> Motion-Corrected Quantitative R2* Mapping</h2>
+    <p class="abstract"> The  <b>FIRST</b> unified qMRI framework for recovering high-quality quantitative R2* maps <br> directly from noisy, subsampled, and artifact-corrupted MRI measurements.</p>
     <hr>
     <p class="authors">
-	<a href="https://hu-yuyang.github.io"> Yuyang Hu</a>*<sup>1</sup>,
+	<a href="https://xuxiaojian.github.io"> Xiaojian Xu</a>*<sup>1</sup>,
         <a href="https://wjgancn.github.io"> Weijie Gan</a>*<sup>1</sup>,
-        <a href="https://www.researchgate.net/profile/Chunwei_Ying"> Chunwei Ying</a><sup>2</sup>,
-        <a href="https://www.linkedin.com/in/cornelia-wang-744665118/"> Tongyao Wang</a><sup>3</sup>,<br> 
-        <a href="https://scholar.google.com/citations?user=PU44ObcAAAAJ&hl=en"> Cihat Eldeniz</a><sup>3</sup>,
-        <a href="https://jiamingliu-jeremy.github.io"> Jiaming Liu<sup>1</sup></a>,
-        <a href="https://profiles.wustl.edu/en/persons/yasheng-chen"> Yasheng Chen</a><sup>4</sup> ,
-        <a href="https://profiles.wustl.edu/en/persons/hongyu-an"> Hongyu An</a><sup>2,3,4</sup>, and
+        <a href="https://chenultrasoundlab.wustl.edu/people/satya-kothapalli/">  Satya V. V. N. Kothapalli</a><sup>2</sup>,<br>
+        <a href="https://profiles.wustl.edu/en/persons/hongyu-an"> Dmitriy A. Yablonskiy</a><sup>2</sup>, and
         <a href="https://engineering.wustl.edu/faculty/Ulugbek-Kamilov.html"> Ulugbek S. Kamilov</a><sup>1</sup> </br>
     </p>
     <p>
 	<a><sup>1</sup>Computational Imaging Group (CIG), Washington University in St. Louis, St. Louis, MO, USA</a></br>
-        <a><sup>2</sup>Mallinckrodt Institute of Radiology, Washington University in St. Louis, St. Louis, MO, USA</a></br>   
-        <a><sup>3</sup>Department of Biomedical Engineering,Washington University in St. Louis, St. Louis, MO, USA</a></br>
-        <a><sup>4</sup>Department of Neurology, Washington University in St. Louis, St. Louis, MO, USA</a></br>
-    <p> <b>Yuyang Hu</b> and <b>Weijie Gan</b> contributed equally to this project.</p>
+    <a><sup>2</sup>Mallinckrodt Institute of Radiology, Washington University in St. Louis, St. Louis, MO, USA</a></br>   
+    <p></p>
 
     <div class="btn-group" role="group" aria-label="Top menu">
         <!--<a class="btn btn-primary" href="https://ieeexplore.ieee.org/document/9743932">Paper</a>-->
-        <a class="btn btn-primary" href="https://arxiv.org/abs/2210.02584">Preprint</a>
+        <a class="btn btn-primary" href="https://arxiv.org/abs/2210.06330">Preprint</a>
         <!--<a class="btn btn-primary" href="https://github.com/lanl/scico-data/blob/main/notebooks/superres_ppp_dncnn_admm.ipynb">Code</a>-->
     </div>
 </div>
@@ -66,7 +53,7 @@
         <h2>Abstract</h2>
         <hr>
         <p>
-            Deep model-based architectures (DMBAs) integrating physical measurement models and learned image regularizers are widely used in parallel magnetic resonance imaging (PMRI). Traditional DMBAs for PMRI rely on pre-estimated coil sensitivity maps (CSMs) as a component of the measurement model. However, estimation of accurate CSMs is a challenging problem when measurements are highly undersampled. Additionally, traditional training of DMBAs requires high-quality groundtruth images, limiting their use in applications where groundtruth is difficult to obtain. This paper addresses these issues by presenting <b>SPICE</b> as a new method that integrates self-supervised learning and automatic coil sensitivity estimation. Instead of using pre-estimated CSMs, SPICE simultaneously reconstructs accurate MR images and estimates high-quality CSMs. SPICE also enables learning from undersampled noisy measurements without any groundtruth. We validate SPICE on experimentally collected data, showing that it can achieve state-of-the-art performance in highly accelerated data acquisition settings (up to 10×).
+            Quantitative MRI (qMRI) refers to a class of MRI methods for quantifying the spatial distribution of biological tissue parameters. Traditional qMRI methods usually deal separately with artifacts arising from accelerated data acquisition, involuntary physical motion, and magnetic-field inhomogeneities, leading to suboptimal end-to-end performance. This paper presents CoRRECT, a unified deep unfolding (DU) framework for qMRI consisting of a model-based end-to-end neural network, a method for motion-artifact reduction, and a self-supervised learning scheme. The network is trained to produce R2* maps whose k-space data matches the real data by also accounting for motion and field inhomogeneities. When deployed, CoRRECT only uses the k-space data without any pre-computed parameters for motion or inhomogeneity correction. Our results on experimentally collected multi-Gradient-Recalled Echo (mGRE) MRI data show that CoRRECT recovers motion and inhomogeneity artifact-free R2* maps in highly accelerated acquisition settings. This work opens the door to DU methods that can integrate physical measurement models, biophysical signal models, and learned prior models for high-quality qMRI.
         </p>
 
          <div class="row align-items-center">
@@ -82,44 +69,57 @@
         <hr>
         <div class="row align-items-center">
 			<div class="col justify-content-center text-justify">
-                <img style="width:100%" src="img/fig-method-final.png" >
-                <p style="text-align: justify;"><b>Figure 1:</b> The SPICE method consists of a DMBA-based MRI reconstruction module and a coil sensitivity estimation module that map multicoil undersampled measurements to a single high-quality image and a set of coil sensitivity maps, respectively. The network is trained directly on raw k-space measurements where the input and the target measurement correspond to a pair of undersampled measurements from the same object.</p>
+                <img style="width:100%" src="img/pipeline.png" >
+                <p style="text-align: justify;"><b>Figure 1:</b> 
+                    The overview of the CoRRECT framework for training an end-to-end deep network consisting of two modules: R<sub>θ</sub> for reconstructing mGRE MRI images and E<sub>φ</sub> for estimating corresponding R2* maps. The network takes input as subsampled, noisy, and motion-corrupted k-space measurements. R<sub>θ</sub> is implemented as a deep model-based architecture (DMBA) initialized using the zero-filled reconstruction. E<sub>φ</sub>  is implemented as a customized U-Net architecture mapping the output of R<sub>θ</sub> to the desired R2* map.The whole network is trained end-to-end using fully-sampled mGRE sequence data without any ground-truth quantitative R2* maps.
             </div>
         </div>
     </div>
     
     <div class="section">
-        <h2>Validation on Experimentally-Collected 3D MRI Data</h2>
+        <h2>Validation on Simulated Data</h2>
         <hr>
 
         <div class="row align-items-center">
 			<div class="col justify-content-center text-center">
-                <img src="img/masks.png" style="width:58%" alt="Banner">
-                <p style="text-align: justify;"><b>Figure 2:</b> The first row shows the cartesian equispaced sampling masks P used in the experimental validation: R = 4, 6, 8 and 10, with corresponding ACS lines = 24, 24, 8 and 5. The second row shows the zero-filled images of the include the PSNR/SSIM values with respect to the groundtruth.</p>
+                <img src="img/simu_across_methods.png" style="width:100%" alt="Banner">
+                <p style="text-align: justify;"><b>Figure 2:</b> 
+                    Quantitative and visual evaluation of CoRRECT on simulated data corrupted with synthetic motion, sampled using acceleration factor x4. The bottom-left corner of each image provides the SNR and SSIM values with respect to the ground-truth.  Arrows in the zoomed-in plots highlight brain regions that are well reconstructed using CoRRECT. The R2* corresponding to TV,  RED, and DU are obtained by the recent LEARN-BIO network. Note the excellent quantitative performance of CoRRECT for mGRE reconstruction and R2*estimation.
             </div>
         </div>
-        
+    </div>
+
+    <div class="section">
+        <h2>Validation on Experimental Data</h2>
+        <hr>
+
         <div class="row align-items-center">
 			<div class="col justify-content-center text-center">
-                <img src="img/visual_results.png" style="width:85%" alt="Banner">
-                <p><b>Figure 3:</b> Illustration of SPICE reconstructed images compared against several baseline methods.</p>
+                <img src="img/real_across_methods.png" style="width:100%" alt="Banner">
+                <p style="text-align: justify;"><b>Figure 2:</b> 
+                    Visual evaluation of CoRRECT on experimentally collected data corrupted with real motion, sampled using acceleration factor x4. The mGRE image in the first column (denoted with x1) uses motion-corrupted but fully-sampled k-space data, while the ones in other columns use motion-corrupted and subsampled k-space data. Note the excellent performance of CoRRECT for producing high-quality mGRE and R2*images. Note also the abilty of CoRRECT trained on synthetic motion to address artifacts due to real object motion.
             </div>
         </div>
 
         <div class="row align-items-center">
 			<div class="col justify-content-center text-center">
-                <img src="img/abl_final.png" style="width:70%" alt="Banner">
-                <p><b>Figure 4:</b> Illustration of SPICE reconstructed images compared against several ablation methods.</p>
+                <img src="img/real_248.png" style="width:100%" alt="Banner">
+                <p style="text-align: justify;"><b>Figure 2:</b> 
+                    Visual evaluation of CoRRECT on experimentally-collected data corrupted with real motion, subsampled using acceleration rates x2, x4, x8. Arrows in the zoomed-in plots highlight brain regions that are well reconstructed using CoRRECT. Corrupted (x1) uses motion-corrupted but fully-sampled measurements, while ZF+NLLS, TV, RED, DU and CoRRECT use motion-corrupted and subsampled measurements.  Note the improvements due to CoRRECT across different sampling rates.
             </div>
         </div>
 
         <div class="row align-items-center">
 			<div class="col justify-content-center text-center">
-                <img src="img/csm_tv.png" style="width:85%" alt="Banner">
-                <p style="text-align: justify;"><b>Figure 5:</b> Evaluation of CSMs estimated by SPICE at various acceleration rates. The third rows shows the sensitivity map of the 10th coil estimated by SPICE and ESPIRiT. The first row shows the results from using these CSMs within TV reconstruction at acceleration rate R = 4.</p>
+                <img src="img/real_across_slices.png" style="width:100%" alt="Banner">
+                <p style="text-align: justify;"><b>Figure 2:</b>
+                    Visual evaluation of CoRRECT on experimental data corrupted with real motion, sampled using acceleration rate x4. The first row shows several slices of reconstructed mGRE images from the whole brain volume of 72 slices, while the second row shows the corresponding estimated R2*maps. In each column of the first row, the images to the left of the dashed line are the mGRE images reconstructed from the fully-sampled, noisy, and motion-corrupted measurements, while the images to the right are the result of the CoRRECT reconstruction from subsampled, noisy, and motion-corrupted measurements.  In each column of the second row, the R2*maps to the left of the dashed line are estimated using NLLS on mGRE images in the first row, while those to the right are produced by CoRRECT. Arrows in the plots highlight brain regions that are well reconstructed using CoRRECT. Note how CoRRECT can remove artifacts across the whole brain volume. 
             </div>
         </div>
-        
+
+
+
+
     </div>
     
     <div class="section">
@@ -127,9 +127,9 @@
         <hr>
         <div>
             <div class="list-group">
-                <a href="https://arxiv.org/abs/2210.02584"
+                <a href="https://arxiv.org/abs/2210.06330"
                    class="list-group-item">
-                    <img src="img/paper_thumbnail.jpg" style="width:100%; margin-right:-20px; margin-top:-10px;">
+                   <embed src="https://arxiv.org/pdf/2210.06330.pdf" width="800px" height="600px" style="width:100%; margin-right:-20px; margin-top:-10px;"/>
                 </a>
             </div>
         </div>
@@ -139,21 +139,16 @@
         <h2>Bibtex</h2>
         <hr>
         <div class="bibtexsection">
-            @article{Hu2022SPICE,
-              title={SPICE: Self-Supervised Learning for MRI with 
-                   Automatic Coil Sensitivity Estimation},
-              author={Hu, Yuyang
-                and Gan, Weijie
-                and Ying, Chunwei 
-                and Wang, Tongyao 
-                and Eldeniz, Cihat 
-                and Liu, Jiaming
-                and Chen, Yasheng 
-                and An, Hongyu
-                and Kamilov, Ulugbek S.},
-              note={arXiv:2210.02584},
-              year={2022}
-            }
+            @article{xu2022correct,
+                title={CoRRECT: A Deep Unfolding Framework for Motion-Corrected Quantitative R2* Mapping},
+                author={Xu, Xiaojian 
+                        and Gan, Weijie 
+                        and Kothapalli, Satya VVN 
+                        and Yablonskiy, Dmitriy A 
+                        and Kamilov, Ulugbek S},
+                journal={arXiv preprint arXiv:2210.06330},
+                year={2022}
+              }
         </div>
     </div>
 
