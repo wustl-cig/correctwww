@@ -25,7 +25,7 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container"></div>
     <h2>CoRRECT: A Deep Unfolding Framework for </h2> <h2> Motion-Corrected Quantitative R2* Mapping</h2>
-    <p class="abstract"> The  <b>FIRST</b> unified qMRI framework for recovering high-quality quantitative R2* maps <br> directly from noisy, subsampled, and artifact-corrupted MRI measurements.</p>
+    <p class="abstract"> The  <b>FIRST</b> unified qMRI framework for recovering high-quality quantitative R2* maps <br> directly from noisy, subsampled, and motion-corrupted MRI measurements.</p>
     <hr>
     <p class="authors">
 	<a href="https://xuxiaojian.github.io"> Xiaojian Xu</a>*<sup>1</sup>,
@@ -56,12 +56,8 @@
             Quantitative MRI (qMRI) refers to a class of MRI methods for quantifying the spatial distribution of biological tissue parameters. Traditional qMRI methods usually deal separately with artifacts arising from accelerated data acquisition, involuntary physical motion, and magnetic-field inhomogeneities, leading to suboptimal end-to-end performance. This paper presents CoRRECT, a unified deep unfolding (DU) framework for qMRI consisting of a model-based end-to-end neural network, a method for motion-artifact reduction, and a self-supervised learning scheme. The network is trained to produce R2* maps whose k-space data matches the real data by also accounting for motion and field inhomogeneities. When deployed, CoRRECT only uses the k-space data without any pre-computed parameters for motion or inhomogeneity correction. Our results on experimentally collected multi-Gradient-Recalled Echo (mGRE) MRI data show that CoRRECT recovers motion and inhomogeneity artifact-free R2* maps in highly accelerated acquisition settings. This work opens the door to DU methods that can integrate physical measurement models, biophysical signal models, and learned prior models for high-quality qMRI.
         </p>
 
-         <div class="row align-items-center">
-            <div class="col justify-content-center text-center">
-                <img src="img/10x_recon.gif" style="width:90%" alt="Banner">
-                <p><b>Video 1:</b> Illustration of SPICE reconstructed 3D images from real data under <b>10x</b> acceleration. The video also illustrates the performance of two reference methods, GRAPPA and SSDU.</p>
-            </div>
-        </div>
+         
+
     </div>
 
     <div class="section">
